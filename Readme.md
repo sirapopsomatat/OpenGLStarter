@@ -73,6 +73,7 @@ Repo: https://github.com/momotheoxy/OpenGLStarter
 
 ## Linux (Ubuntu/Debian) — Setup
 
+1. Use this code
    ```bash
    sudo apt update
    sudo apt install -y build-essential git cmake ninja-build
@@ -85,6 +86,7 @@ Repo: https://github.com/momotheoxy/OpenGLStarter
 
 ## Get the Code
 
+1. Use this code
    ```bash
    git clone https://github.com/momotheoxy/OpenGLStarter
    cd OpenGLStarter
