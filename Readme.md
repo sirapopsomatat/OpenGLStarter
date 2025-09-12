@@ -31,16 +31,19 @@ Repo: https://github.com/momotheoxy/OpenGLStarter
    ```powershell
    winget install Git.Git
    winget install Kitware.CMake
+   ```
 
 3. Install vcpkg:
    ```powershell
    git clone https://github.com/microsoft/vcpkg $env:USERPROFILE\vcpkg
    & $env:USERPROFILE\vcpkg\bootstrap-vcpkg.bat
    setx VCPKG_ROOT "$env:USERPROFILE\vcpkg"
+   ```
 
 4. Verify the toolchain file exists (should print True):
    ```powershell
    Test-Path "$env:USERPROFILE\vcpkg\scripts\buildsystems\vcpkg.cmake"
+   ```
 
 **We use MSVC on Windows (Visual Studio generator), not MinGW.**
 
@@ -51,14 +54,17 @@ Repo: https://github.com/momotheoxy/OpenGLStarter
 1. Command Line Tools:
    ```bash
    xcode-select --install
+   ```
 
 2. Homebrew (if you don’t have it):
    ```bash
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
 
 3. Tools:
    ```bash
    brew install git cmake ninja
+   ```
 
 4. vcpkg:
    ```bash
@@ -66,6 +72,7 @@ Repo: https://github.com/momotheoxy/OpenGLStarter
    ~/vcpkg/bootstrap-vcpkg.sh
    echo 'export VCPKG_ROOT="$HOME/vcpkg"' >> ~/.bashrc   # or ~/.zshrc
    export VCPKG_ROOT="$HOME/vcpkg"
+   ```
 
 **macOS uses an OpenGL core, forward-compatible context (OpenGL 4.1 max).**
 
@@ -73,7 +80,6 @@ Repo: https://github.com/momotheoxy/OpenGLStarter
 
 ## Linux (Ubuntu/Debian) — Setup
 
-1. Use this code
    ```bash
    sudo apt update
    sudo apt install -y build-essential git cmake ninja-build
@@ -81,15 +87,16 @@ Repo: https://github.com/momotheoxy/OpenGLStarter
    ~/vcpkg/bootstrap-vcpkg.sh
    echo 'export VCPKG_ROOT="$HOME/vcpkg"' >> ~/.bashrc
    export VCPKG_ROOT="$HOME/vcpkg"
+   ```
 
 ---
 
 ## Get the Code
 
-1. Use this code
    ```bash
    git clone https://github.com/momotheoxy/OpenGLStarter
    cd OpenGLStarter
+   ```
 
 **Open the folder root in VS Code (the same folder that contains CMakeLists.txt).**
 
@@ -153,24 +160,29 @@ Repo: https://github.com/momotheoxy/OpenGLStarter
 
 ## Folder Layout
 
+```
 OpenGLStarter/
-  src/
-    main.cpp
-    Libs/
-      Mesh.{h,cpp}
-      Shader.{h,cpp}
-      Window.{h,cpp}
-  Shaders/
-    shader.vert
-    shader.frag
-  .vscode/
-    settings.json
-    launch.json
-    tasks.json
-  CMakeLists.txt
-  CMakePresets.json
-  vcpkg.json
-  README.md
+├─ src/
+│  ├─ main.cpp
+│  └─ Libs/
+│     ├─ Mesh.h
+│     ├─ Mesh.cpp
+│     ├─ Shader.h
+│     ├─ Shader.cpp
+│     ├─ Window.h
+│     └─ Window.cpp
+├─ Shaders/
+│  ├─ shader.vert
+│  └─ shader.frag
+├─ .vscode/
+│  ├─ settings.json
+│  ├─ launch.json
+│  └─ tasks.json
+├─ CMakeLists.txt
+├─ CMakePresets.json
+├─ vcpkg.json
+└─ README.md
+```
 
 ---
 
