@@ -7,6 +7,10 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 #include <vector>
 #include <cmath>
 
@@ -18,7 +22,7 @@ const GLint WIDTH = 800, HEIGHT = 600;
 
 Window mainWindow;
 std::vector<Mesh*> meshList;
-std::vector<Shader> shaderList;
+std::vector<Shader*> shaderList;
 
 //Vertex Shader
 static const char* vShader = "Shaders/shader.vert";
@@ -41,7 +45,7 @@ void CreateTriangle()
     };
 
     Mesh *obj1 = new Mesh();
-    obj1->CreateMesh(vertices, indices, 9, 9);
+    obj1->CreateMesh(vertices, indices, 9, 3);
     meshList.push_back(obj1);
 }
 
@@ -49,7 +53,7 @@ void CreateShaders()
 {
     Shader* shader1 = new Shader();
     shader1->CreateFromFiles(vShader, fShader);
-    shaderList.push_back(*shader1);
+    shaderList.push_back(shader1);
 }
 
 int main()
@@ -71,7 +75,7 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         //draw here
-        shaderList[0].UseShader();
+        shaderList[0]->UseShader();
 
         //Object
         meshList[0]->RenderMesh();
