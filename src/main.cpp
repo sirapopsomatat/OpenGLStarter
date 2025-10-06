@@ -17,6 +17,8 @@
 #include "Libs/Window.h"
 #include "Libs/Mesh.h"
 
+#include "Libs/stb_image.h"
+
 const GLint WIDTH = 800, HEIGHT = 600;
 
 Window mainWindow;
@@ -36,10 +38,10 @@ void CreateTriangle()
 {
     GLfloat vertices[] =
         {
-            -1.0f, -1.0f, 0.0f,
-            0.0f, -1.0f, 1.0f,
-            1.0f, -1.0f, 0.0f,
-            0.0f, 1.0f, 0.0f};
+            -1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
+            0.0f, -1.0f, 1.0f, 0.5f, 0.0f,
+            1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
+            0.0f, 1.0f, 0.0f, 0.5f, 1.0f};
 
     unsigned int indices[] =
         {
@@ -176,23 +178,6 @@ int main()
         uniformProjection = shaderList[0]->GetUniformLocation("projection");
 
         glm::mat4 view(1.0f);
-
-        if (glfwGetKey(mainWindow.getWindow(), GLFW_KEY_W) == GLFW_PRESS)
-        {
-            cameraPos += cameraDirection * 5.0f * deltaTime;
-        }
-        if (glfwGetKey(mainWindow.getWindow(), GLFW_KEY_S) == GLFW_PRESS)
-        {
-            cameraPos -= cameraDirection * 5.0f * deltaTime;
-        }
-        if (glfwGetKey(mainWindow.getWindow(), GLFW_KEY_A) == GLFW_PRESS)
-        {
-            cameraPos -= cameraRight * 5.0f * deltaTime;
-        }
-        if (glfwGetKey(mainWindow.getWindow(), GLFW_KEY_D) == GLFW_PRESS)
-        {
-            cameraPos += cameraRight * 5.0f * deltaTime;
-        }
 
         // glm::mat4 cameraPosMat(1.0f);
         // cameraPosMat[3][0] = -cameraPos.x;
