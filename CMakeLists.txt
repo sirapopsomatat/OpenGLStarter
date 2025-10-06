@@ -45,3 +45,9 @@ add_custom_target(copy_textures ALL
           ${CMAKE_SOURCE_DIR}/Textures
           $<TARGET_FILE_DIR:OpenGLStarter>/Textures)
 add_dependencies(OpenGLStarter copy_textures)
+
+add_custom_target(copy_models ALL
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+  ${CMAKE_SOURCE_DIR}/Models
+  $<TARGET_FILE_DIR:OpenGLStarter>/Models)
+add_dependencies(OpenGLStarter copy_models)
