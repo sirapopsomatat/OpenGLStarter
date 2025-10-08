@@ -1,25 +1,23 @@
 #version 330 core
 
-out vec4 colour;
-in vec4 vCol;
-in vec2 TexCoord;
+layout (location = 0) in vec3 pos;
+layout (location = 1) in vec2 aTexCoord;
+layout (location = 2) in vec3 aNormal;
 
-uniform sampler2D texture1;
-uniform vec3 lightColour;
-//uniform sampler2D texture2;
+out vec4 vCol;
+out vec2 TexCoord;
+out vec3 Normal;
+out vec3 FragPos;
 
-// vec3 ambientLight()
-// {
-//     float ambientStrength = 0.5;
-//     vec3 ambient = ambientStrength * lightColour;
-//     return ambient;
-// }
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
 
 void main()
 {
-    //phong = ambient + diffuse + specular;
-    float ambientStrength = 0.3;
-    vec3 ambientLight = ambientStrength * vec3(0.0, 1.0, 1.0);
-    colour = texture(texture1, TexCoord) * vec4(ambientLight, 1.0);
-    
+    gl_Position = projection * view * model * vec4(pos, 1.0);
+    FragPos = vec3(model * vec4(pos, 1.0));
+    vCol = vec4(clamp(pos, 0.0f, 1.0f), 1.0f);
+    TexCoord = aTexCoord;
+    Normal = aNormal;
 }
